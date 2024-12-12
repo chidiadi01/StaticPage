@@ -23,6 +23,9 @@ jobs:
           name: static-website
           path: ./ 
 
+      - name: List directory contents
+        run: ls -R
+            
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v4
         with:
