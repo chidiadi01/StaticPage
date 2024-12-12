@@ -1,23 +1,31 @@
-name: Deploy Static HTML and CSS to GitHub Pages
+name: Deploy Static Website
 
-# Trigger the workflow on push to the main branch
 on:
   push:
     branches:
       - main
+
+permissions:
+  id-token: write
+  contents: read
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
     steps:
-    # Step 1: Checkout the repository
-    - name: Checkout Code
-      uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-    # Step 2: Deploy to GitHub Pages
-    - name: Deploy to GitHub Pages
-      uses: actions/deploy-pages@v4
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./ 
+      - name: Upload website files
+        uses: actions/upload-artifact@v3
+        with:
+          name: static-website
+          path: ./ 
+
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          artifact_name: static-website
+          preview: false
