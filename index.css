@@ -1,0 +1,120 @@
+html{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    scroll-behavior: smooth;
+    
+    
+}
+h1{
+    color: black; 
+    font-weight: bold;
+    font-size: 96px;
+    text-align: center;
+}
+
+body{
+    margin: 0px;
+    
+}
+.container{
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.one{
+    justify-content: center;
+    margin: auto;
+    width: 80vw;
+    min-height: 80vh;
+    
+}
+.one-p {
+    justify-content: center;
+    text-align: center;
+}
+
+
+a{
+    height: 60px;
+    width: 60px;
+    margin: auto;
+    background-color: skyblue;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+img{
+    height: 28px;
+    width: 28px;
+}
+
+.two{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 20px;
+    width: 90%;
+    min-height: 300px;
+    margin: auto;
+    align-items: center;
+    padding-bottom: 20px;
+    margin-top: 10px;
+}
+.cards {
+    height: 150px;
+    width: 200px;
+    background-color: rgb(149, 210, 235);
+    border-radius: 10px;
+    margin: 20px;
+    padding: 30px;
+    transition: transform 1s ease, background-color 0.5s ease;
+    
+}
+.cards:hover{
+    background-color: rgb(164, 213, 233);
+    transform: scale(1.2);
+    z-index: 2;
+}
+
+/*Previous card*/
+ .cards:has( + .cards:hover) {
+    transform: perspective(500px) rotateY(-20deg);
+}
+
+/*Next card*/
+.cards:hover + .cards {
+    transform: perspective(500px) rotateY(20deg);
+}
+
+footer{
+    justify-content: center;
+    text-align: center;
+}
+
+@media screen and (max-width: 600px) {
+    h1{
+        font-size: 50px;
+    }
+    .one-p{
+        font-size: 20px;
+        width: 100vw;
+        margin: 10px 10px 10px 10px;
+    }
+    .one{
+        width: 100vw;
+        min-height: 200px;
+        margin:0px;
+    }
+    .two{
+        width: 70%;
+        grid-template-columns: 1fr; 
+        margin-left: 10%;
+        margin-right: 10%;
+    }
+    .cards{
+        height: 100px;
+        width: 250px;
+        font-size: large;
+    }
+}
